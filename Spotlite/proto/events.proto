@@ -1,0 +1,25 @@
+syntax = "proto3";
+
+package insight;
+
+service Matcher {
+    rpc GetDriver(Rider) returns (Driver) {}
+    rpc AddDriver(Driver) returns (Driver) {}
+}
+
+message Driver {
+	int64 Id = 1;
+	double Lat = 2;
+	double Lng = 3;
+	double Radius = 4;
+	int64 Timestamp =6;
+	int64 Status = 5;
+}
+message Rider {
+	int64 Id = 1;
+	double sLat = 2;
+	double sLng = 3;
+	double eLat = 4;
+	double eLng =5;
+	int64 Timestamp =6;
+}
