@@ -7,7 +7,7 @@ import (
 	"os"
 	"time"
 
-	insight "github.com/apganesh/Insight_Project/common"
+	insight "github.com/apganesh/Insight_Project/Spotlite/common"
 	"github.com/confluentinc/confluent-kafka-go/kafka"
 	"github.com/gogo/protobuf/proto"
 	"google.golang.org/grpc"
@@ -48,10 +48,11 @@ func addDriver(client insight.MatcherClient, driver *insight.Driver) {
 
 // RPC Call for Matching Driver
 func getDriver(client insight.MatcherClient, rider *insight.Rider) {
-	_, err := client.GetDriver(context.Background(), rider)
+	resp, err := client.GetDriver(context.Background(), rider)
 	if err != nil {
 		log.Fatalf("Could not get Driver: %v", err)
 	}
+	fmt.Println("Got driver: ", resp.Id, resp.Lat, resp.Lng)
 }
 
 func setupKafkaConsumer(broker string, group string) (*kafka.Consumer, error) {
