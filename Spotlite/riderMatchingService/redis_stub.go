@@ -9,7 +9,7 @@ import (
 	"sort"
 	"strconv"
 
-	insight "github.com/apganesh/Insight_Project/common"
+	insight "github.com/apganesh/Insight_Project/Spotlite/common"
 	"github.com/go-redis/redis"
 	"github.com/golang/geo/s2"
 )

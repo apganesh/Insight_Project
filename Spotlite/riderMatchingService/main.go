@@ -11,7 +11,7 @@ import (
 	"golang.org/x/net/context"
 	"google.golang.org/grpc"
 
-	insight "github.com/apganesh/Insight_Project/common"
+	insight "github.com/apganesh/Insight_Project/Spotlite/common"
 	"github.com/pkg/profile"
 )
 
