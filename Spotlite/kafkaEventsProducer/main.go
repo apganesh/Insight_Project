@@ -9,7 +9,7 @@ import (
 	"strconv"
 	"time"
 
-	insight "github.com/apganesh/Insight_Project/common"
+	insight "github.com/apganesh/Insight_Project/Spotlite/common"
 	"github.com/confluentinc/confluent-kafka-go/kafka"
 	"github.com/gogo/protobuf/proto"
 )
@@ -116,7 +116,7 @@ func readDrivers(fname string) error {
 }
 
 func readDriverFile() error {
-	fname := "../data/drivers.log"
+	fname := "../data/drivers.log.small"
 	driverFile, err := os.Open(fname)
 	if err != nil {
 		fmt.Println("Cannot open file at location: ", fname)
@@ -159,7 +159,7 @@ func readDriverFile() error {
 }
 
 func readRiderFile() error {
-	fname := "../data/riders.log"
+	fname := "../data/riders.log.small"
 	riderFile, err := os.Open(fname)
 	if err != nil {
 		fmt.Println("Cannot open file at location: ", fname)
@@ -204,7 +204,7 @@ func sendKafkaMessage(mesg string) {
 	producer.ProduceChannel() <- &kafka.Message{TopicPartition: kafka.TopicPartition{Topic: &topic, Partition: kafka.PartitionAny}, Value: []byte(mesg)}
 }
 
-func setupKafka(broker, topic string) error {
+func setupKafka(broker string) error {
 	var err error
 	producer, err = kafka.NewProducer(&kafka.ConfigMap{"bootstrap.servers": broker})
 
@@ -217,7 +217,7 @@ func setupKafka(broker, topic string) error {
 
 	go func() {
 		for e := range producer.Events() {
-			//fmt.Println("Producer got an event ... ")
+
 			switch ev := e.(type) {
 			case *kafka.Message:
 				m := ev
@@ -239,26 +239,15 @@ func setupKafka(broker, topic string) error {
 }
 
 func main() {
-	/*
-		if len(os.Args) != 3 {
-			fmt.Fprintf(os.Stderr, "Usage: %s <broker> <topic>\n",
-				os.Args[0])
-			os.Exit(1)
-		}
-	*/
-
-	//broker := os.Args[1]
-	topic = insight.DefaultConfig.KafkaTopics
+	topic = insight.DefaultConfig.KafkaProducerTopic
 	broker := insight.DefaultConfig.KafkaBrokers
-	//fmt.Println("broker and topic ", broker, topic)
 
-	err := setupKafka(broker, topic)
+	err := setupKafka(broker)
 	if err != nil {
 		fmt.Printf("Failed to setup Kafka: %s\n", err)
 		return
 	}
 
-	//readDrivers("../data/driver_events.log")
 	go readDriverFile()
 	time.Sleep(2 * time.Second)
 	go readRiderFile()
