@@ -31,4 +31,4 @@
 ## Slides, Video, etc
 - Demo: http://spotlite.xyz
 - Slides: https://goo.gl/FShSZk
-- Video: 
+- Video: ![alt text](https://drive.google.com/open?id=0B5DP82LM5Bo7Q2hyYnNuOXlFNEE)
