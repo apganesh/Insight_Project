@@ -28,7 +28,7 @@
 - All the connectors between Kafka, Redis and Cassandra uses Go bindings.  
 
 
-# Slides, Video, etc
-Demo: http://spotlite.xyz
-Slides: https://goo.gl/FShSZk
-Video: 
+## Slides, Video, etc
+- Demo: http://spotlite.xyz
+- Slides: https://goo.gl/FShSZk
+- Video: 
