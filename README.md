@@ -5,7 +5,7 @@
 - During the three week data engineering project, i attempted to provide a high throughput and low latency service which could provide all the overlapping geo-fences the user/device is overlapping with.  To show case this idea I have a simple use case, where a rider is matched with the taxi-driver's whose geo-fences'(the distance which they are willing to drive) are overlapping with the rider's location.  
 
 ## Pipeline
-
+[[https://github.com/apganesh/Insight_Project/blob/master/Spotlite/config/Spotlite_Pipeline.jpg]]
 
 
 ## Pipeline details
@@ -31,4 +31,4 @@
 ## Slides, Video, etc
 - Demo: http://spotlite.xyz
 - Slides: https://goo.gl/FShSZk
-- Video: ![alt text](https://drive.google.com/open?id=0B5DP82LM5Bo7Q2hyYnNuOXlFNEE)
+- Video: ![alt text]
